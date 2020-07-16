@@ -5,6 +5,7 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     Rigidbody2D rigidbody2;
+    Animator anima;
 
     public float jumpForce;
     public float walkForce;
@@ -13,6 +14,7 @@ public class playerController : MonoBehaviour
     private void Start()
     {
         this.rigidbody2 = GetComponent<Rigidbody2D>();
+        this.anima = GetComponent<Animator>();
     }
 
     private void Update()
@@ -41,5 +43,14 @@ public class playerController : MonoBehaviour
             transform.localScale = new Vector3(key, 1, 1);
         }
 
+        //this.anima.speed = speedx / 2.0f;
+        if (speedx == 0)
+        {
+            this.anima.speed = speedx;
+        }
+        else if (speedx != 0)
+        {
+            this.anima.speed = 1;
+        }
     }
 }
