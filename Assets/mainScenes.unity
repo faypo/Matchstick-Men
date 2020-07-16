@@ -13791,7 +13791,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -13835,7 +13835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55f635d4014f5b24d82759fd72dfa403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 800
+  jumpForce: 1500
   walkForce: 20
   maxWalkSpeed: 30
 --- !u!95 &366265960
@@ -20167,7 +20167,7 @@ PrefabInstance:
     - target: {fileID: 5283640903300633827, guid: eabe3227746cfcd4ca9c44924ae3c922,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.7
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 5283640903300633827, guid: eabe3227746cfcd4ca9c44924ae3c922,
         type: 3}
@@ -36021,12 +36021,12 @@ PrefabInstance:
     - target: {fileID: 5283640903300633827, guid: eabe3227746cfcd4ca9c44924ae3c922,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.9
+      value: 12.08
       objectReference: {fileID: 0}
     - target: {fileID: 5283640903300633827, guid: eabe3227746cfcd4ca9c44924ae3c922,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.7
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 5283640903300633827, guid: eabe3227746cfcd4ca9c44924ae3c922,
         type: 3}
