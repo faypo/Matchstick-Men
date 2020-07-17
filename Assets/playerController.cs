@@ -8,49 +8,86 @@ public class playerController : MonoBehaviour
     Animator anima;
 
     public float jumpForce;
-    public float walkForce;
-    public float maxWalkSpeed;
+    public float walkSpeed;
+
+    private BoxCollider2D myFeet;
+    private bool isGround;
+
 
     private void Start()
     {
+
         this.rigidbody2 = GetComponent<Rigidbody2D>();
+        this.myFeet = GetComponent<BoxCollider2D>();
         this.anima = GetComponent<Animator>();
+
     }
 
     private void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Space) && this.rigidbody2.velocity.y == 0)
-        {
-            this.rigidbody2.AddForce(transform.up * this.jumpForce);
+        walk();
+        flip();
+        jump();
+        checkGrounded();
+        attack();
+    }
 
+    private void walk()
+    {
+        float moveDir = Input.GetAxis("Horizontal");
+
+
+        Vector2 playerVel = new Vector2 (moveDir * walkSpeed, rigidbody2.velocity.y);
+        rigidbody2.velocity = playerVel;
+
+
+        bool playerHasXAxisSpeed = Mathf.Abs(rigidbody2.velocity.x) > Mathf.Epsilon;
+        anima.SetBool("walk",playerHasXAxisSpeed);
+
+    }
+
+    private void flip()
+    {
+
+        bool playerHasXAxisSpeed = Mathf.Abs(rigidbody2.velocity.x) > Mathf.Epsilon;
+        if (playerHasXAxisSpeed)
+        {
+            if(rigidbody2.velocity.x > 0.1f)
+            {
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
+
+            if (rigidbody2.velocity.x < -0.1f)
+            {
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
+            }
         }
 
+    }
 
-        int key = 0;
-        if (Input.GetKey(KeyCode.RightArrow)) key = 1;
-        if (Input.GetKey(KeyCode.LeftArrow)) key = -1;
-
-        float speedx = Mathf.Abs(this.rigidbody2.velocity.x);
-
-        if(speedx < this.maxWalkSpeed)
+    private void jump()
+    {
+        if (Input.GetButtonDown("Jump"))
         {
-            this.rigidbody2.AddForce(transform.right * key * this.walkForce);
+            if(isGround)
+            {
+                 Vector2 jumpVec = new Vector2(0.0f, jumpForce);
+                 rigidbody2.velocity = Vector2.up * jumpVec;
+            }
+      
         }
+    }
 
-        if (key != 0)
-        {
-            transform.localScale = new Vector3(key, 1, 1);
-        }
+    private void checkGrounded()
+    {
+        isGround = myFeet.IsTouchingLayers(LayerMask.GetMask("Ground"));
+    }
 
-        //this.anima.speed = speedx / 2.0f;
-        if (speedx == 0)
+    private void attack()
+    {
+        if (Input.GetButtonDown("Attack"))
         {
-            this.anima.speed = speedx;
-        }
-        else if (speedx != 0)
-        {
-            this.anima.speed = 1;
+            anima.SetTrigger("Attack");
         }
     }
 }
