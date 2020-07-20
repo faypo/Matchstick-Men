@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class playerController : MonoBehaviour
 {
     Rigidbody2D rigidbody2;
@@ -29,21 +31,30 @@ public class playerController : MonoBehaviour
         flip();
         jump();
         checkGrounded();
-        attack();
+        //attack();
         switchAnimation();
     }
+
+    //private void attack()
+    //{
+    //    if (Input.GetButtonDown("Attack"))
+    //    {
+    //        anima.SetTrigger("Attack");
+    //    }
+    //}
+
 
     private void walk()
     {
         float moveDir = Input.GetAxis("Horizontal");
 
 
-        Vector2 playerVel = new Vector2 (moveDir * walkSpeed, rigidbody2.velocity.y);
+        Vector2 playerVel = new Vector2(moveDir * walkSpeed, rigidbody2.velocity.y);
         rigidbody2.velocity = playerVel;
 
 
         bool playerHasXAxisSpeed = Mathf.Abs(rigidbody2.velocity.x) > Mathf.Epsilon;
-        anima.SetBool("walk",playerHasXAxisSpeed);
+        anima.SetBool("walk", playerHasXAxisSpeed);
 
     }
 
@@ -53,7 +64,7 @@ public class playerController : MonoBehaviour
         bool playerHasXAxisSpeed = Mathf.Abs(rigidbody2.velocity.x) > Mathf.Epsilon;
         if (playerHasXAxisSpeed)
         {
-            if(rigidbody2.velocity.x > 0.1f)
+            if (rigidbody2.velocity.x > 0.1f)
             {
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
@@ -70,12 +81,11 @@ public class playerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            if(isGround)
+            if (isGround)
             {
-                 Vector2 jumpVec = new Vector2(0.0f, jumpForce);
-                 rigidbody2.velocity = Vector2.up * jumpVec;
+                Vector2 jumpVec = new Vector2(0.0f, jumpForce);
+                rigidbody2.velocity = Vector2.up * jumpVec;
             }
-      
         }
     }
 
@@ -93,11 +103,43 @@ public class playerController : MonoBehaviour
         }
     }
 
-    private void attack()
-    {
-        if (Input.GetButtonDown("Attack"))
-        {
-            anima.SetTrigger("Attack");
-        }
-    }
+    #region Animation
+    //private void animationWalkLeft()
+    //{
+
+    //}
+    #endregion
+
+    #region Action
+    //private void actionWalkLeft()
+    //{
+
+    //}
+
+    //private void actionWalkRight()
+    //{
+
+    //}
+
+    //private void actionJumpUp()
+    //{
+
+    //}
+
+    //private void actionJumpKeep()
+    //{
+
+    //}
+
+    //private void actionJumpDown()
+    //{
+
+    //}
+
+    //private void actionAttack()
+    //{
+
+    //}
+    #endregion
+
 }
