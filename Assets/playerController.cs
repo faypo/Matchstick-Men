@@ -30,6 +30,7 @@ public class playerController : MonoBehaviour
         jump();
         checkGrounded();
         attack();
+        switchAnimation();
     }
 
     private void walk()
@@ -81,6 +82,15 @@ public class playerController : MonoBehaviour
     private void checkGrounded()
     {
         isGround = myFeet.IsTouchingLayers(LayerMask.GetMask("Ground"));
+    }
+
+    private void switchAnimation()
+    {
+        anima.SetBool("Idie", false);
+        if (isGround)
+        {
+            anima.SetBool("Idie", true);
+        }
     }
 
     private void attack()
