@@ -7,6 +7,7 @@ public class playerAttack : MonoBehaviour
     public float time;
     public int damage;
 
+    public KeyCode attackKey;
     public Animator anima;
     public PolygonCollider2D coll2d;
 
@@ -23,7 +24,7 @@ public class playerAttack : MonoBehaviour
 
     private void attack()
     {
-        if (Input.GetButtonDown("Attack"))
+        if (Input.GetKey(attackKey))
         {
             anima.SetTrigger("Attack");
             coll2d.enabled = true;

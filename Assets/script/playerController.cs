@@ -12,8 +12,12 @@ public class playerController : MonoBehaviour
     public float jumpForce;
     public float walkSpeed;
 
+    public KeyCode left;
+    public KeyCode right;
+    public KeyCode jumpkey;
+
     private BoxCollider2D myFeet;
-    private bool isGround;
+    public bool isGround;
 
 
     private void Start()
@@ -47,10 +51,29 @@ public class playerController : MonoBehaviour
     private void walk()
     {
         float moveDir = Input.GetAxis("Horizontal");
+        
+        if (Input.GetKey(left))
+        {
+            rigidbody2.velocity = new Vector2(-walkSpeed, rigidbody2.velocity.y);
+
+            //rigidbody2.velocitynew Vector2( -walkSpeed, rigidbody2.velocity.y);
+            //playerVel = new Vector2( -walkSpeed, rigidbody2.velocity.y);
+        }else if (Input.GetKey(right))
+        {
+            rigidbody2.velocity = new Vector2(walkSpeed, rigidbody2.velocity.y);
+
+            //playerVel = new Vector2( walkSpeed, rigidbody2.velocity.y);
+        }
+        else
+        {
+            rigidbody2.velocity = new Vector2(0, rigidbody2.velocity.y);
+        }
 
 
-        Vector2 playerVel = new Vector2(moveDir * walkSpeed, rigidbody2.velocity.y);
-        rigidbody2.velocity = playerVel;
+        //Vector2 playerVel = new Vector2(moveDir * walkSpeed, rigidbody2.velocity.y);
+
+
+        //rigidbody2.velocity = playerVel;
 
 
         bool playerHasXAxisSpeed = Mathf.Abs(rigidbody2.velocity.x) > Mathf.Epsilon;
@@ -79,7 +102,7 @@ public class playerController : MonoBehaviour
 
     private void jump()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKey(jumpkey))
         {
             if (isGround)
             {

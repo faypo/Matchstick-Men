@@ -60,11 +60,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\cameraController.cs" />
-    <Compile Include="Assets\Enemy.cs" />
-    <Compile Include="Assets\hitTest.cs" />
-    <Compile Include="Assets\playerAttack.cs" />
-    <Compile Include="Assets\playerController.cs" />
+    <Compile Include="Assets\script\cameraController.cs" />
+    <Compile Include="Assets\script\Enemy.cs" />
+    <Compile Include="Assets\script\hitTest.cs" />
+    <Compile Include="Assets\script\playerAttack.cs" />
+    <Compile Include="Assets\script\playerController.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/admin/Desktop/unity/Matchstick-Men/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
