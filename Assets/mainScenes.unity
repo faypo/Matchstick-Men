@@ -4825,6 +4825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 0.7
   damage: 1
+  health: 0
   attackKey: 108
   anima: {fileID: 0}
   coll2d: {fileID: 0}
@@ -19548,7 +19549,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -19912,6 +19913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 0.7
   damage: 1
+  health: 0
   attackKey: 102
   anima: {fileID: 0}
   coll2d: {fileID: 0}
@@ -43764,7 +43766,7 @@ GameObject:
   - component: {fileID: 1172018012}
   - component: {fileID: 1172018011}
   m_Layer: 0
-  m_Name: player 2
+  m_Name: player2
   m_TagString: player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
