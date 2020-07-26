@@ -6,6 +6,8 @@ public class player2Attack : MonoBehaviour
 {
     public float time;
     public int damage;
+    public int health;
+
 
     public KeyCode attackKey;
     public Animator anima;
@@ -20,6 +22,7 @@ public class player2Attack : MonoBehaviour
     private void Update()
     {
         attack();
+        isdead();
     }
 
     private void attack()
@@ -45,4 +48,13 @@ public class player2Attack : MonoBehaviour
             other.GetComponent<Enemy>().getHit(damage);
         }
     }
+
+    public void isdead()
+    {
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }

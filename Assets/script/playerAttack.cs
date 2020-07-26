@@ -6,6 +6,7 @@ public class playerAttack : MonoBehaviour
 {
     public float time;
     public int damage;
+    public int health;
 
     public KeyCode attackKey;
     public Animator anima;
@@ -20,6 +21,7 @@ public class playerAttack : MonoBehaviour
     private void Update()
     {
         attack();
+        isdead();
     }
 
     private void attack()
@@ -43,6 +45,14 @@ public class playerAttack : MonoBehaviour
         if(other.gameObject.CompareTag("Enemy"))
         {
             other.GetComponent<Enemy>().getHit(damage);  
+        }
+    }
+
+    public void isdead()
+    {
+        if (health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 
